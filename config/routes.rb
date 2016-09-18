@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  get 'tweets/indexsudo'
+
+  get 'tweets/service'
+
+  get 'tweets/postgresql'
+
+  get 'tweets/start'
+
  #  get 'blogs' => 'blogs#index'
 resources :blogs, only:[:index,:new,:create,:edit,:update,:destroy] do
   collection do
