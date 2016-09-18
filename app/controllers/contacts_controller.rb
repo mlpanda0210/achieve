@@ -22,10 +22,10 @@ class ContactsController < ApplicationController
       render :new if @contact.invalid?
   end
   
+  
   private
   def contacts_params
-      params.require(:contact).permit(:name,:email,:inquiry)
+      params.require(:contact).permit(:name,:email,:content)
   end
-  
-end
+  end
   
