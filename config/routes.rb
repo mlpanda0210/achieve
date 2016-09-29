@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
 
 
-  get 'tweets/indexsudo'
+  devise_for :users
 
-  get 'tweets/service'
-
-  get 'tweets/postgresql'
-
-  get 'tweets/start'
-
- #  get 'blogs' => 'blogs#index'
 resources :blogs, only:[:index,:new,:create,:edit,:update,:destroy] do
   collection do
     post :confirm
