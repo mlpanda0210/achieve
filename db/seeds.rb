@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+n=3
+while n<=104
+name = Faker::Name.name
+user=User.find(n)
+user.name = name
+user.save
+n = n + 1
+end
