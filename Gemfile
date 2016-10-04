@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -28,7 +28,7 @@ gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpry
 gem 'pry-doc'    # methodを表示
 
 gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
-  
+
 gem 'pry-stack_explorer' # スタックをたどれる
 
 # Use ActiveModel has_secure_password
@@ -57,6 +57,11 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'faker'
 gem 'pry-rails'
-
-
 ruby '2.3.0'
+gem 'therubyracer', platforms: :ruby
+gem 'rails_admin'
+gem 'cancan'
+
+group :development do
+  gem 'letter_opener_web'
+end
