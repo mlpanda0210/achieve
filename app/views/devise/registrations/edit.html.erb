@@ -4,7 +4,7 @@
 <h2>アカウントを編集する</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= f.error_messages! %>
 
   <div class="field">
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
@@ -32,7 +32,7 @@
 <br>
 
 <h2>アカウントを削除する</h2>
-<%= button_to "アカウントを削除する" ,registration_path(resource_name), 
+<%= button_to "アカウントを削除する" ,registration_path(resource_name),
 data: { confirm: "本当に削除しますか？" }, method: :delete, class: "btn btn-danger btn-block"  %>
 
 <%= link_to "戻る", :back %>
