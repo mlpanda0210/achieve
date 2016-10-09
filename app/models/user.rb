@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :blogs
 
+  def self.create_unique_string
+     SecureRandom.uuid
+   end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
    user = User.where(provider: auth.provider, uid: auth.uid).first
 
@@ -23,6 +27,7 @@ class User < ActiveRecord::Base
    end
    user
  end
+
 
  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
    user = User.where(provider: auth.provider, uid: auth.uid).first
