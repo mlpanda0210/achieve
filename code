@@ -1,0 +1,5 @@
+rails s -b $IP -p $PORT
+
+sudo service postgresql start
+
+rake routes |grep blog
