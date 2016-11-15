@@ -4,7 +4,7 @@
 <h2>アカウントを編集する</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_messages! %>
+<%= f_error_messages! %>
 
   <div class="field">
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>

@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_blog, only: [:edit, :update, :destroy]
+  before_action :set_blog, only: [:edit, :show, :update, :destroy]
 
   def index
     @blogs=Blog.all
@@ -49,6 +49,12 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_path, notice: "ブログを削除しました!"
+  end
+
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+    binding.pry
   end
 
 

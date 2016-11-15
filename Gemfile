@@ -73,6 +73,9 @@ gem 'carrierwave'
 gem 'rmagick'
   gem 'dotenv-rails'
 
+  gem 'google-api-client'
+
+
 group :development do
   gem 'letter_opener_web'
 
