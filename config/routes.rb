@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users, controllers: {
+   registrations: "users/registrations",
+   omniauth_callbacks: "users/omniauth_callbacks"
+}
+
+
+
+  get 'relationships/create'
+  get 'relationships/destroy'
+
+
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -19,12 +30,10 @@ resources :contacts, only:[:new,:create] do
   end
 end
 
-root 'top#index'
+ resources :users, only: [:index, :show]
+ resources :relationships, only: [:create, :destroy]
 
-   devise_for :users, controllers: {
-    registrations: "users/registrations",
-    omniauth_callbacks: "users/omniauth_callbacks"
-}
+root 'top#index'
 
 
 if Rails.env.development?
