@@ -29,7 +29,7 @@ class SubmitRequestsController < ApplicationController
 
     respond_to do |format|
       if @submit_request.save
-        format.html { redirect_to @submit_request, notice: 'Submit request was successfully created.' }
+        format.html { redirect_to @submit_request, notice: '依頼を作成しました' }
         format.json { render :show, status: :created, location: @submit_request }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class SubmitRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @submit_request.update(submit_request_params)
-        format.html { redirect_to @submit_request, notice: 'Submit request was successfully updated.' }
+        format.html { redirect_to @submit_request, notice: '依頼を更新しました' }
         format.json { render :show, status: :ok, location: @submit_request }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class SubmitRequestsController < ApplicationController
   def destroy
     @submit_request.destroy
     respond_to do |format|
-      format.html { redirect_to submit_requests_url, notice: 'Submit request was successfully destroyed.' }
+      format.html { redirect_to submit_requests_url, notice: '依頼を消去しました' }
       format.json { head :no_content }
     end
   end
