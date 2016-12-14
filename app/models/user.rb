@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
 
   has_many :blogs , dependent: :destroy
   has_many :comments , dependent: :destroy
+  has_many :tasks, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
-
+  has_many :submit_requests, dependent: :destroy
+  has_many :received_requests, class_name: 'SubmitRequest', foreign_key:'request_user_id'
 
   def update_with_password(params, *options)
     if provider.blank?

@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
 
 
+  resources :submit_requests do
+    get 'inbox', on: :collection
+    member do
+      patch 'approve'
+      patch 'reject'
+    end
+  end
+  resources :tasks
   devise_for :users, controllers: {
    registrations: "users/registrations",
    omniauth_callbacks: "users/omniauth_callbacks"
 }
 
-
-
   get 'relationships/create'
   get 'relationships/destroy'
-  
-
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -30,7 +34,9 @@ resources :contacts, only:[:new,:create] do
   end
 end
 
- resources :users, only: [:index, :show]
+ resources :users, only: [:index, :show, :edit, :update] do
+   resources :tasks
+ end
  resources :relationships, only: [:create, :destroy]
 
 root 'top#index'

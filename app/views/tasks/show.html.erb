@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ユーザー:</strong>
+  <%= @task.user.name %>
+</p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @task.content %>
+</p>
+
+<p>
+  <strong>締め切り期限:</strong>
+  <%= @task.deadline.strftime('%Y年%m月%d日 %H:%M:%S') %>
+</p>
+
+<p>
+  <strong>担当:</strong>
+  <%= @task.charge.name %>
+</p>
+
+<p>
+  <strong>完了/未完了:</strong>
+  <%= if @task.done? then "完了" else "未完了" end %>
+</p>
+
+<p>
+  <strong>状況:</strong>
+  <%= @task.status == 1? "対応中" : "未着手" %>
+</p>
+
+<%= link_to '編集', edit_user_task_path(@task.user, @task),class: 'btn btn-default btn-sm btn-success' %> |
+<%= link_to '戻る', user_tasks_path(@task.user) %>
