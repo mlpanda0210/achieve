@@ -8,53 +8,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
   <header>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Achieve", root_path, class: "navbar-brand" %>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "ブログ", blogs_path %></li>
-              <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
-              <li>  <%= link_to "マイタスク一覧", user_tasks_path(current_user.id) if user_signed_in? %></li>
-              <li>  <%= link_to "依頼タスク一覧", submit_requests_path(current_user.id) if user_signed_in? %></li>
-              <li>  <%= link_to "依頼されているタスク一覧", inbox_submit_requests_path(current_user.id) if user_signed_in? %></li>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Achieve", root_path, class: "navbar-brand" %>
+        </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "ブログ", blogs_path %></li>
+                  <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
+                  <li><%= link_to "マイタスク一覧", user_tasks_path(current_user.id) if user_signed_in? %></li>
+                  <li><%= link_to "依頼タスク一覧", submit_requests_path(current_user.id) if user_signed_in? %></li>
+                  <li><%= link_to "依頼されているタスク一覧", inbox_submit_requests_path(current_user.id) if user_signed_in? %></li>
+                  <li><%= link_to "メッセージ", conversations_path %></li>
+                </ul>
+                <li><%= link_to "問い合わせ", new_contact_path %></li>
+              </li>
+              <% if user_signed_in? %>
+              <li><%= link_to 'マイページ', edit_user_registration_path %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+              <li><%= link_to 'ログイン', new_user_session_path %></li>
+              <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+              <% end %>
             </ul>
-             <li><%= link_to "問い合わせ", new_contact_path %></li>
-          </li>
-          <% if user_signed_in? %>
-           <li><%= link_to 'マイページ', edit_user_registration_path %></li>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'ログイン', new_user_session_path %></li>
-            <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-          <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-  </header>
-
-<%= yield %>
-
-  <footer>
-    <p>運営会社DIVE INTO CODE株式会社</p>
-    <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
-  </footer>
-
-</body>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+    <%= yield %>
+    <footer>
+      <p>運営会社DIVE INTO CODE株式会社</p>
+      <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+    </footer>
+  </body>
 </html>

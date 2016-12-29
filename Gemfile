@@ -75,6 +75,8 @@ gem 'rmagick'
 
   gem 'google-api-client'
 
+  gem 'kaminari'
+
 
 group :development do
   gem 'letter_opener_web'
