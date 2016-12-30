@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :current_notifications, if: :signed_in?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -13,6 +14,9 @@ class ApplicationController < ActionController::Base
   #変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
+def current_notifications
+  @notificatons_count = Notification.where(user_id: current_user.id).where(read: false).count
+end
 
 
   private

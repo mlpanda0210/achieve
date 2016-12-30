@@ -77,6 +77,8 @@ gem 'rmagick'
 
   gem 'kaminari'
 
+  gem 'pusher'
+
 
 group :development do
   gem 'letter_opener_web'

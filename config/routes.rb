@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
   resources :submit_requests do
     get 'inbox', on: :collection
     member do
@@ -27,9 +29,9 @@ Rails.application.routes.draw do
   end
 
   resources :contacts, only:[:new,:create] do
-     collection do
-      post :confirm
-    end
+    collection do
+     post :confirm
+   end
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
