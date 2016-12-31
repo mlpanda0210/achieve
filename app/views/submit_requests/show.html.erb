@@ -20,12 +20,12 @@
 
     <p>
       <strong>依頼したユーザー:</strong>
-      <%= @submit_request.request_user_id %>
+      <%= User.find_by(id: @submit_request.request_user_id).name %>
     </p>
 
     <p>
       <strong>状況:</strong>
-      <%= @submit_request.status %>
+      <%= @submit_request.status == 1?"対応中" : "未着手"  %>
     </p>
 
     <%= link_to '編集', edit_submit_request_path(@submit_request) ,class: 'btn btn-default btn-sm btn-success'%> |
