@@ -24,7 +24,7 @@
             <td><%= submit_request.user.name %></td>
             <td><%= submit_request.task.title %></td>
             <td><%= submit_request.message %></td>
-            <td><%= User.find_by(id: submit_request.request_user_id).name %></td>
+            <td><%= submit_request.request_user.name %></td>
             <td><%= submit_request.status == 1?"対応中" : "未着手" %></td>
             <td><%= link_to '詳細', submit_request ,class: 'btn btn-default btn-sm btn-primary' %></td>
             <td><%= link_to '編集', edit_submit_request_path(submit_request) ,class: 'btn btn-default btn-sm btn-success'%></td>

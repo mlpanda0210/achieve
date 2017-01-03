@@ -47,10 +47,8 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to user_tasks_url, notice: 'タスクを編集しました。' }
-        format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,7 +59,6 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to user_tasks_url,  notice: 'タスクを削除しました。' }
-      format.json { head :no_content }
     end
   end
 

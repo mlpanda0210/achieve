@@ -20,7 +20,7 @@
 
     <p>
       <strong>依頼したユーザー:</strong>
-      <%= User.find_by(id: @submit_request.request_user_id).name %>
+      <%= @submit_request.request_user.name %>
     </p>
 
     <p>

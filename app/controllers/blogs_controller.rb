@@ -3,8 +3,8 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :show, :update, :destroy]
 
   def index
-    @blogs=Blog.all.page(params[:page])
-    @users=User.all
+    @blogs = Blog.all.order(created_at: :desc).page(params[:page])
+    @users = User.all
   end
 
   def new
@@ -17,7 +17,6 @@ class BlogsController < ApplicationController
 
   def create
      @blog = current_user.blogs.new(blogs_params)
-
      if @blog.save
        redirect_to blogs_path, notice: "ブログを作成しました!"
         NoticeMailer.sendmail_blog(@blog).deliver
@@ -33,12 +32,9 @@ class BlogsController < ApplicationController
   def update
     if @blog.update(blogs_params)
     redirect_to blogs_path,  notice: "ブログを編集しました!"
-
   else
     render action: 'edit'
-
     end
-
   end
 
   def confirm
@@ -57,14 +53,11 @@ class BlogsController < ApplicationController
     Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
-
   private
-    def blogs_params
-      params.require(:blog).permit(:title, :content)
-    end
-
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
-
+  def blogs_params
+    params.require(:blog).permit(:title, :content)
+  end
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 end

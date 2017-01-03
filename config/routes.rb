@@ -9,20 +9,19 @@ Rails.application.routes.draw do
       patch 'reject'
     end
   end
+
   resources :tasks
   devise_for :users, controllers: {
    registrations: "users/registrations",
    omniauth_callbacks: "users/omniauth_callbacks"
-}
+ }
 
   get 'relationships/create'
   get 'relationships/destroy'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :blogs do
     resources :comments
-
     collection do
       post :confirm
     end

@@ -1,8 +1,8 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @users = User.all
-    @conversations = Conversation.all
+    @users = User.limit(10)
+    @conversations = Conversation.limit(10)
   end
 
   def create
