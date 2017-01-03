@@ -23,15 +23,20 @@ gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpry
 gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施(Ruby 2.0以降で動作する)
 gem 'pry-stack_explorer' # スタックをたどれる
+gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails'
-  gem 'dotenv-rails'
   gem 'google-api-client'
   gem 'better_errors'
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -55,4 +60,6 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
+gem 'dotenv-rails'
+gem 'unicorn'
 ruby '2.3.0'
