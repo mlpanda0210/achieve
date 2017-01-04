@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
 def current_notifications
-  @notificatons_count = Notification.where(user_id: current_user.id).where(read: false).count
+  @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
 end
 
 
